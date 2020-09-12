@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.company.springboot.demo.dao.CourseTableMapper">
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.CourseTable">
-        <id column="kmid" property="kmid" jdbcType="VARCHAR"/>
+        <id column="kmid" property="kmid" jdbcType="INTEGER"/>
         <result column="kcid" property="kcid" jdbcType="VARCHAR" />
         <result column="ryid" property="ryid" jdbcType="VARCHAR" />
         <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
@@ -15,6 +15,19 @@
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
         <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <resultMap id="CourseDo" type="com.company.springboot.demo.vo.CourseVo">
+        <result column="kcid" property="kcid" jdbcType="INTEGER"/>
+        <result column="kmid" property="kmid" jdbcType="INTEGER"/>
+        <result column="kmName" property="kmName" jdbcType="VARCHAR"/>
+        <result column="ryid" property="ryid" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="starttime" property="starttime" jdbcType="TIMESTAMP"/>
+        <result column="startday" property="startday" jdbcType="TIMESTAMP"/>
+        <result column="jsclass" property="jsclass" jdbcType="VARCHAR"/>
+        <result column="kctime" property="kctime" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
     </resultMap>
 
 
@@ -53,6 +66,20 @@
     </select>
     <select id="findAll" resultType="com.company.springboot.demo.dao.entity.CourseTable">
         select * from Course_Table
+    </select>
+    <select id="courseList" resultMap="CourseDo">
+        select o.kcid,s.kmid,s.kmName,u.ryid,u.name,o.starttime,o.startday,o.jsclass,o.kctime,o.status from
+        course_table o left join subject_table s on o.kmid = s.kmid left join  user_table u on
+        o.ryid = u.ryid
+        <where>
+            o.del = '1'
+            <if test="startday != null">
+                and startday = #{startday}
+            </if>
+            <if test="kmName != null and kmName != ''">
+                and kmName = #{kmName}
+            </if>
+        </where>
     </select>
 
 </mapper>

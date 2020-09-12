@@ -14,7 +14,40 @@
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
-
+    <resultMap id="TaskDo" type="com.company.springboot.demo.vo.TaskVo">
+        <result column="jTask" property="jTask" jdbcType="VARCHAR"/>
+        <result column="kmid" property="kmid" jdbcType="INTEGER"/>
+        <result column="kmName" property="kmName" jdbcType="VARCHAR"/>
+        <result column="ryid" property="ryid" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="startdate" property="startdate" jdbcType="TIMESTAMP"/>
+        <result column="enddate" property="enddate" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="taskList" resultMap="TaskDo">
+        SELECT
+	ta.jTask,
+	su.kmid,
+	su.kmName,
+	us.ryid
+	us.name,
+	ta.startdate,
+	ta.enddate,
+	ta. STATUS
+  FROM
+	task_ztable ta
+  LEFT JOIN course_table co ON ta.kcid = co.kcid
+  LEFT JOIN subject_table su ON co.kmid = su.kmid
+  LEFT JOIN user_table us ON co.ryid = us.ryid
+<where>
+    <if test="jTask != null and jTask != ''">
+        jTask = #{jTask}
+    </if>
+    <if test="kmName != null and kmName != ''">
+        kmName = #{kmName}
+    </if>
+</where>
+    </select>
 
 
 </mapper>

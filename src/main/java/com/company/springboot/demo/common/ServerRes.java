@@ -13,6 +13,10 @@ import java.io.Serializable;
  */
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerRes<T> implements Serializable {
+    private static String SUCCESS ="正常";
+
+    private static String ERROR = "错误";
+
     private int status;
     private String msg;
     private T data;
@@ -37,11 +41,21 @@ public class ServerRes<T> implements Serializable {
     public static<T> ServerRes<T> success(Result result){
         return new ServerRes<T>(result.getCode(),result.getMsg());
     }
+
+    //返回其他的成功信息
+    public static<T> ServerRes<T> success(T data){
+        return new ServerRes<T>(Result.RESULT_SUCCESS.getCode(),SUCCESS,data);
+    }
     //使用@JsonIgnore，直接返回此方法的返回值，无需进行json序列化处理
     @JsonIgnore
     public static int success(){
         return Result.RESULT_SUCCESS.getCode();
     }
+
+    public static ServerRes OK(String msg){
+        return new ServerRes(Result.RESULT_SUCCESS.getCode(),msg,null);
+    }
+
     //返回Error信息
     public static<T> ServerRes<T> error(Result result){
         return new ServerRes<T>(result.getCode(),result.getMsg());

@@ -10,10 +10,11 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode
 public class CourseTable extends Model {
-    @TableId(value = "kcid")
+    @TableId(value = "kcid",type = IdType.AUTO)
     private Integer kcid;//课程ID
     private String kmid;//科目ID
-
+    private String jsclass;//教室
+    private String kctime;//课程时间
     private String ryid;//授课教师
     private Date starttime;//上课时间
     private Date startday;//上课日期

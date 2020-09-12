@@ -16,6 +16,7 @@ public class TaskZtable extends Model {
     private String jTask;//教师任务
     private Date startdate;//任务开始日期
     private Date enddate;//任务结束日期
+    private String status;//状态
     private String del;//删除标志0删除1未删除
     private String createdBy;
     private Date createdTime;
