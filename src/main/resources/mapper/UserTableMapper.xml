@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.springboot.demo.dao.UserTableMapper">
+    <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.UserTable">
+        <id column="ryid" property="ryid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="stuteaNum" property="stuteaNum" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="nowadd" property="nowadd" jdbcType="VARCHAR" />
+        <result column="idNum" property="idNum" jdbcType="VARCHAR" />
+        <result column="politics" property="politics" jdbcType="VARCHAR" />
+        <result column="honor" property="honor" jdbcType="VARCHAR" />
+        <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+        <result column="birth" property="birth" jdbcType="TIMESTAMP" />
+        <result column="del" property="del" jdbcType="VARCHAR" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    ryid,name,stuteaNum, username, password, age,sex, phone, address, nowadd, idNum,politics,honor,synopsis,birth,del,created_by, create_time,updated_by, update_time
+  </sql>
+
+    <update id="modifyPassword" parameterType="map">
+    update UserTable set password = #{newPassword} where username = #{username}
+    </update>
+    <update id="setNewPassword" parameterType="map">
+        update UserTable set password = #{password} where username = #{username}
+    </update>
+
+    <select id="login" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from UserTable where ryid = #{ryid}
+    </select>
+
+    <select id="getPasswordByName" parameterType="map" resultType="java.lang.String">
+        select password from UserTable where username = #{username}
+    </select>
+    <select id="checkUsername" parameterType="map" resultType="java.lang.Integer">
+        select count(1) from UserTable where username = #{username}
+    </select>
+    <select id="checkPhone" resultType="java.lang.Integer">
+        select count(1) from UserTable where phone = #{phone}
+    </select>
+
+
+</mapper>

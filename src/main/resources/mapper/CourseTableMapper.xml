@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.springboot.demo.dao.CourseTableMapper">
+    <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.CourseTable">
+        <id column="kmid" property="kmid" jdbcType="VARCHAR"/>
+        <result column="kcid" property="kcid" jdbcType="VARCHAR" />
+        <result column="ryid" property="ryid" jdbcType="VARCHAR" />
+        <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+        <result column="startday" property="startday" jdbcType="TIMESTAMP" />
+        <result column="jskrrs" property="jskrrs" jdbcType="VARCHAR" />
+        <result column="sfyty" property="sfyty" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="del" property="del" jdbcType="VARCHAR" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+    <update id="updateAfterSaleStatus">
+        update after_sale set after_sale_status = #{status} WHERE id = #{afterSaleId}
+    </update>
+    <select id="listAfterSale" resultMap="BaseResultMap">
+        SELECT
+        question_dt,
+        addressee_nm,
+        addressee_tel,
+        sales_user_name,
+        create_user_id,
+        check_status,
+        checker_user_name
+        FROM
+        after_sale
+        <where>
+            flag = 'T'
+            <if test="addresseeTel != null and addresseeTel != ''">
+                and addressee_tel = #{addresseeTel}
+            </if>
+            <if test="salesUserId != null">
+                and sales_user_id = #{salesUserId}
+            </if>
+            <if test="addresseeNm != null and addresseeNm != ''">
+                and addressee_nm = #{addresseeNm}
+            </if>
+            <if test="begDate !=null || endDate != null">
+                and  question_dt between #{questionBegDate} and #{questionEndDate}
+            </if>
+            <if test="checkStatus != null and checkStatus != ''">
+                and check_status = #{checkStatus}
+            </if>
+        </where>
+    </select>
+    <select id="findAll" resultType="com.company.springboot.demo.dao.entity.CourseTable">
+        select * from Course_Table
+    </select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.springboot.demo.dao.SubjectTableMapper">
+    <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.SubjectTable">
+        <id column="kmid" property="kmid" jdbcType="VARCHAR"/>
+        <result column="kmName" property="kmName" jdbcType="VARCHAR" />
+        <result column="del" property="del" jdbcType="VARCHAR" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+
+
+</mapper>
