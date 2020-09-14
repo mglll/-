@@ -29,22 +29,23 @@
 	ta.jTask,
 	su.kmid,
 	su.kmName,
-	us.ryid
+	us.ryid,
 	us.name,
 	ta.startdate,
 	ta.enddate,
-	ta. STATUS
+	ta.status
   FROM
 	task_ztable ta
   LEFT JOIN course_table co ON ta.kcid = co.kcid
   LEFT JOIN subject_table su ON co.kmid = su.kmid
   LEFT JOIN user_table us ON co.ryid = us.ryid
 <where>
+    ta.del = '1'
     <if test="jTask != null and jTask != ''">
-        jTask = #{jTask}
+      and jTask = #{jTask}
     </if>
     <if test="kmName != null and kmName != ''">
-        kmName = #{kmName}
+       and kmName = #{kmName}
     </if>
 </where>
     </select>
