@@ -1,26 +1,54 @@
-function fnLogin() {
- var oUname = document.getElementById("username")
- var oUpass = document.getElementById("pwd")
- var oError = document.getElementById("error_box")
- var isError = true;
- if (oUname.value.length > 20 || oUname.value.length < 6) {
-  oError.innerHTML = "用户名请输入6-20位字符";
-  isError = false;
-  return;
- }else if((oUname.value.charCodeAt(0)>=48) && (oUname.value.charCodeAt(0)<=57)){
-  oError.innerHTML = "首字符必须为字母";
-  return;
- }else for(var i=0;i<oUname.value.charCodeAt(i);i++){
-  if((oUname.value.charCodeAt(i)<48)||(oUname.value.charCodeAt(i)>57) && (oUname.value.charCodeAt(i)<97)||(oUname.value.charCodeAt(i)>122)){
-   oError.innerHTML = "必须为字母跟数字组成";
-   return;
-  }
- }
- 
- if (oUpass.value.length > 20 || oUpass.value.length < 6) {
-  oError.innerHTML = "密码请输入6-20位字符"
-  isError = false;
-  return;
- }
- window.alert("登录成功")
+//forgetBtn --> 页面跳转
+function forgetpwd(){
+	window.open("updatePwd.html");
+	alert(window.location);
+}
+
+
+//loginBtn  --> 成功实现页面跳转，失败页面提示
+function loginsuccess(){
+	
+	var username_input = input_username_pwd.username.value;//获取用户名输入框信息
+	console.log("输入的用户名为："+username_input)
+	var pwd_input = input_username_pwd.pwd.value;//获取密码输入框信息
+    console.log("输入的密码为："+pwd_input)
+	
+	if((username_input=="")||(username_input == null)){
+		alert("请输入用户名");
+		return;
+	}else if((pwd_input == "")||(pwd_input == null)){
+		alert("请输入密码");
+		return;
+	}else{
+		
+		$.ajax({
+    	type:"post",
+    	url:"/user/index",
+    	async:true,
+    	data:{
+    		"username":"username_input",
+    		"password":"pwd_input"
+    	},
+    	success: function (data) {
+            if (data.resultInfo == "invalid user") {
+                $("#loginBtn").removeAttr("disabled"), 
+                alert("用户不存在")
+            }
+            else if (data.resultInfo == "invalid password") {
+                $("#loginBtn").removeAttr("disabled"),
+                alert("密码错误")
+            } else{
+            	input_username_pwd.submit();
+                //window.location.href = "/student/dashboard";
+                window.open("loginSuc.html")
+                
+            }
+        },
+        
+    });
+    
+	}
+    
+    
+   
 }
