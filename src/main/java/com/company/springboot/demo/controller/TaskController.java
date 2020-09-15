@@ -6,34 +6,40 @@ import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.service.TaskTableService;
 import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
+@RequestMapping("/task")
 public class TaskController {
 
     @Autowired
     TaskTableService taskTableService;
 
-    @PostMapping(value = "/taskst")
+    @RequestMapping(value = "/taskst",method = RequestMethod.POST)
     public ServerRes taskList(TaskVo taskVo){
         ServerRes serverRes = taskTableService.taskList(taskVo);
         return ServerRes.success(serverRes);
     }
 
-    @PostMapping(value = "/addcor")
+    @RequestMapping(value = "/addcor",method = RequestMethod.POST)
     public ServerRes addCourse(TaskZtable taskZtable){
         taskTableService.addTask(taskZtable);
         return ServerRes.OK("添加成功");
     }
 
-    @PostMapping(value = "/editcor")
+
+    @RequestMapping(value = "/editcor",method = RequestMethod.POST)
     public ServerRes editCourse(TaskZtable taskZtable){
         taskTableService.editTask(taskZtable);
         return ServerRes.OK("修改成功");
     }
 
-    @PostMapping(value = "/delcor")
+
+    @RequestMapping(value = "/delcor",method = RequestMethod.POST)
     public ServerRes delCourse(String rwid){
         taskTableService.delTask(rwid);
         return ServerRes.OK("删除成功");

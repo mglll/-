@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>demo</title>
-    <link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.css">
+    <title>欢迎，请先登陆！</title>
 
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/others/index.css">
 
 </head>
+
 <body>
+<div class="box">
+    <h2>三维时间智能管理系统</h2>
 
-<div>
-    <button type="button" class="btn btn-info">一般信息</button>
-    <button type="button" class="btn btn-danger">危险</button>
-    <button type="button" class="btn btn-warning">警告</button>
-    <button type="button" class="btn btn-link">链接</button>
+    <div class="input_box">
+        <input id="username" type="text" name="username" placeholder="请输入用户名">
+    </div>
+
+    <div class="input_box">
+        <input id="pwd" type="password" name="pwd" placeholder="请输入密码">
+    </div>
+
+    <div id="error_box"><br></div>
+
+    <div class="input_box">
+        <button type="button" class="btn btn-primary" onclick="fnLogin()">登录</button>&nbsp&nbsp&nbsp&nbsp
+        <a href="updatePwd.html"><input type="button" class="btn btn-info" name="forgetPwd" value="忘记密码"></a>
+    </div>
+
+
+    <!--
+        作者：offline
+        时间：2020-09-09
+        描述：引入对应JS文件，实现功能
+    -->
+    <script type="text/javascript" src="js/others/index.js"></script>
+
 </div>
-
-<script src="webjars/jquery/jquery.js"></script>
-<script src="webjars/bootstrap/js/bootstrap.js"></script>
-
 </body>
+
 </html>
