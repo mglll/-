@@ -23,7 +23,8 @@ public class CourseTableServiceImpl implements CourseTableService {
 
     @Override
     public int delCourser(String kcid) {
-        int i = courseTableMapper.deleteById(kcid);
+        CourseTable courseTable = new CourseTable();
+        int i = courseTableMapper.deleteById(courseTable.getKcid());
         return i;
     }
 
