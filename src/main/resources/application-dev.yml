@@ -16,9 +16,23 @@ spring:
   #设置数据库连接及连接池
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/bisheswt?characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/swt?characterEncoding=UTF-8
     username: root
     password: root
+  #配置前端所需资源
+  thymeleaf:
+    #缓冲的配置
+    cache: false
+    check-template: true
+    check-template-location: true
+    #开启MVC thymeleaf 视图解析
+    enabled: true
+    encoding: utf-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -32,3 +46,4 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
