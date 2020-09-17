@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.TaskZtable">
         <id column="rwid" property="rwid" jdbcType="VARCHAR"/>
         <result column="kcid" property="kcid" jdbcType="VARCHAR" />
-        <result column="jTask" property="jTask" jdbcType="VARCHAR" />
+        <result column="jtask" property="jtask" jdbcType="VARCHAR" />
         <result column="startdate" property="startdate" jdbcType="TIMESTAMP" />
         <result column="enddate" property="enddate" jdbcType="TIMESTAMP" />
         <result column="del" property="del" jdbcType="VARCHAR" />

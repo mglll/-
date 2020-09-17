@@ -1,6 +1,7 @@
 package com.company.springboot.demo.service.impl;
 
 import cn.hutool.core.date.DateUtil;
+import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.*;
 import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dao.entity.TeamZtable;
@@ -9,12 +10,14 @@ import com.company.springboot.demo.dao.entity.WorkFiowTable;
 import com.company.springboot.demo.dto.TaskCtableDTO;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -61,4 +64,20 @@ public class TeamServiceImpl implements TeamService {
         limitsTableMapper.updateLimits(i);
 
     }
+
+    @Override
+    public ServerRes teamlist(TeamzVo teamzVo) {
+        List<TeamzVo> teamlist = teamZTableMapper.teamlist(teamzVo);
+        return ServerRes.success(teamlist);
+    }
+
+    @Override
+    public void updatedel(String id) {
+        String byZzid = teamZTableMapper.findByZzid(id);
+        if(byZzid != null){
+            teamZTableMapper.updatedel(byZzid);
+        }
+    }
+
+
 }

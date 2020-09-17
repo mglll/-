@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.UserTable">
         <id column="ryid" property="ryid" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="stuteaNum" property="stuteaNum" jdbcType="VARCHAR" />
+        <result column="stuteanum" property="stuteanum" jdbcType="VARCHAR" />
         <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="VARCHAR" />
@@ -12,7 +12,7 @@
         <result column="phone" property="phone" jdbcType="VARCHAR" />
         <result column="address" property="address" jdbcType="VARCHAR" />
         <result column="nowadd" property="nowadd" jdbcType="VARCHAR" />
-        <result column="idNum" property="idNum" jdbcType="VARCHAR" />
+        <result column="idnum" property="idnum" jdbcType="VARCHAR" />
         <result column="politics" property="politics" jdbcType="VARCHAR" />
         <result column="honor" property="honor" jdbcType="VARCHAR" />
         <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />

@@ -3,7 +3,7 @@
 <mapper namespace="com.company.springboot.demo.dao.RoleTableMapper">
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.RoleTable">
         <id column="jsid" property="jsid" jdbcType="VARCHAR"/>
-        <result column="roleName" property="roleName" jdbcType="VARCHAR" />
+        <result column="rolename" property="rolename" jdbcType="VARCHAR" />
         <result column="del" property="del" jdbcType="VARCHAR" />
         <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />

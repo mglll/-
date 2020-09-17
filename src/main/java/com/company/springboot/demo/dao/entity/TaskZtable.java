@@ -13,7 +13,7 @@ public class TaskZtable extends Model {
     @TableId(value = "rwid",type = IdType.AUTO)
     private Integer rwid;//任务ID
     private String kcid;//课程ID
-    private String jTask;//教师任务
+    private String jtask;//教师任务
     private Date startdate;//任务开始日期
     private Date enddate;//任务结束日期
     private String status;//状态
