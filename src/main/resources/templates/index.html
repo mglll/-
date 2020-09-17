@@ -1,43 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>欢迎，请先登陆！</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>欢迎，请先登录！</title>
+		
+		<link rel="stylesheet" href="CSS/bootstrap/bootstrap.min.css" />
+		<link rel="stylesheet" href="CSS/others/index.css" />
+		
+	</head>
 
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/others/index.css">
+	<body>
+	<div class="container">
+		<div class="row row-centered">
+			<div class="well col-md-6 col-centered">
 
-</head>
+				<h2 style="text-align: center;">三维时间智能管理系统</h2>
 
-<body>
-<div class="box">
-    <h2>三维时间智能管理系统</h2>
+				<form class="form-horizontal" role="form" name="input_username_pwd" action="" method="post">
 
-    <div class="input_box">
-        <input id="username" type="text" name="username" placeholder="请输入用户名">
-    </div>
+					<div class="form-group">
+						<label for="username" id="username" class="col-sm-2 control-label">用户名</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="username" placeholder="请输入用户名">
+						</div>
+					</div>
 
-    <div class="input_box">
-        <input id="pwd" type="password" name="pwd" placeholder="请输入密码">
-    </div>
+					<div class="form-group">
+						<label for="pwd" id="pwd" class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="pwd" placeholder="请输入密码">
+						</div>
+					</div>
 
-    <div id="error_box"><br></div>
+					<!--<div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">-->
+					<button type="submit" id="forgetPwdBtn" class="btn btn-link pull-right" formaction="router/updatePwd" >忘记密码?</button>
+					<button type="submit" id="loginBtn" class="btn btn-success pull-right" onclick="loginsuccess()">登录</button>
+					<!--	</div>
+                    </div>-->
 
-    <div class="input_box">
-        <button type="button" class="btn btn-primary" onclick="fnLogin()">登录</button>&nbsp&nbsp&nbsp&nbsp
-        <a href="updatePwd.html"><input type="button" class="btn btn-info" name="forgetPwd" value="忘记密码"></a>
-    </div>
+				</form>
 
 
-    <!--
-        作者：offline
-        时间：2020-09-09
-        描述：引入对应JS文件，实现功能
-    -->
-    <script type="text/javascript" src="js/others/index.js"></script>
+			</div>
+		</div>
+	</div>
 
-</div>
-</body>
+
+
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script type="text/javascript" src="JS/bootstrap/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script type="text/javascript" src="JS/bootstrap/bootstrap.min.js"></script>
+
+		<!--对应JS文件，实现代码功能-->
+		<script type="text/javascript" src="JS/others/index.js"></script>
+
+	</body>
 
 </html>

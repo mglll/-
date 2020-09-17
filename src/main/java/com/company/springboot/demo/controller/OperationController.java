@@ -17,7 +17,7 @@ public class OperationController {
     OperationService operationService;
 
 
-    @RequestMapping(value = "courlist",method = RequestMethod.POST)
+    @RequestMapping(value = "/courlist",method = RequestMethod.POST)
     public ServerRes courseList(CourseVo courseVo){
         ServerRes serverRes = operationService.courseList(courseVo);
         return ServerRes.success(serverRes);
