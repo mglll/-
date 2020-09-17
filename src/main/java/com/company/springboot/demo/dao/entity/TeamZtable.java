@@ -16,6 +16,7 @@ public class TeamZtable extends Model {
     private String swid;//事务ID
     private String zname;//组名称
     private String ryid;//组长
+    private String zpronum;//小组人数
     private String status;//状态0激活1未激活
     private String del;//删除标志0删除1未删除
     private String createdBy;

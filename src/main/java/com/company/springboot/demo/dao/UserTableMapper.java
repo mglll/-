@@ -49,4 +49,12 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      * @return
      */
     int checkPhone(@Param("phone") String phone);
+
+    /**
+     * 通过姓名查找人员id
+     * @param name
+     * @return
+     */
+    String checkid(@Param("name") String name);
+
 }

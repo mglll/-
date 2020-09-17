@@ -8,10 +8,7 @@ import com.company.springboot.demo.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +20,7 @@ public class UserTableController {
     UserService userService;
 
     @RequestMapping(value = "/index",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes<UserTable> index(String username, String password, HttpSession session){
         if(StringUtils.isBlank(username)||StringUtils.isBlank(password)){
             return ServerRes.error(Result.ILLEGLE_ARGUMENTS);

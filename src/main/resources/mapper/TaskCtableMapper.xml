@@ -16,7 +16,9 @@
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
-
+    <insert id="addTask">
+        insert into task_table(zTask,startdate,starttime,del)where (#{zTask},#{startdate},#{starttime},#{del})
+    </insert>
 
 
 </mapper>

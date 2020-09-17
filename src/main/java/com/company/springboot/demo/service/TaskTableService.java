@@ -8,6 +8,11 @@ import java.util.List;
 
 public interface TaskTableService {
 
+    /**
+     * 查询所有
+     * @param taskVo
+     * @return
+     */
     ServerRes taskList(TaskVo taskVo);
 
     void addTask(TaskZtable taskZtable);
