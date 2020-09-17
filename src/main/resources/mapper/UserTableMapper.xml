@@ -53,5 +53,13 @@
         select ryid from user_table where name = #{name}
     </select>
 
+    <!--学生信息页面List-->
+    <select id="stuInfo" resultType="com.company.springboot.demo.dao.entity.UserTable">
+        SELECT
+        ryid,name,stuteaNum,address,nowadd,age,sex,phone,idNum,politics,honor,birth,synopsis
+        FROM user_table
+        WHERE stuteaNum &gt; 20000 and stuteaNum &lt;  30000
+    </select>
+
 
 </mapper>

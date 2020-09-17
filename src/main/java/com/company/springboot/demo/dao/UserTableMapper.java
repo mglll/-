@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.dao.entity.UserTable;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface UserTableMapper extends BaseMapper<UserTable> {
 
     /**
@@ -56,5 +58,15 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      * @return
      */
     String checkid(@Param("name") String name);
+
+
+    /**
+     * 学生信息页面List
+     * @param userTable
+     * @return
+     */
+    List<UserTable> stuInfo(UserTable userTable);
+
+
 
 }

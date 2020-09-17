@@ -21,5 +21,23 @@ public interface UserService {
      */
     ServerRes modifyPassword(String username,String phone,String newPassword);
 
+    /**
+     * 学生信息页面List
+     * @return
+     */
+     ServerRes  stuInfo(UserTable userTable);
+
+    /**
+     * 学生信息页面 新增
+     * @param userTable
+     */
+     void  addInfo( UserTable userTable);
+
+
+
+
+
+
+
 
 }

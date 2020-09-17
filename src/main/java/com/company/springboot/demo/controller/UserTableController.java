@@ -31,4 +31,25 @@ public class UserTableController {
         }
         return index;
     }
+
+
+    /**
+     * 学生信息页面List
+     * @param userTable
+     * @return
+     */
+    @RequestMapping(value = "stuInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes stuInfo(UserTable userTable){
+        ServerRes serverRes =userService.stuInfo(userTable);
+        return ServerRes.success(serverRes);
+    }
+
+    @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes addInfo(UserTable userTable){
+        userService.addInfo(userTable);
+        return ServerRes.OK("添加成功");
+    }
+
 }

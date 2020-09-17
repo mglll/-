@@ -6,10 +6,7 @@ import com.company.springboot.demo.dao.entity.CourseTable;
 import com.company.springboot.demo.service.CourseTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/course")
@@ -20,6 +17,7 @@ public class CourseController {
 
 
     @RequestMapping(value = "addcor",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes addCourse(CourseTable courseTable){
         courseTableService.addCourser(courseTable);
         return ServerRes.OK("添加成功");
@@ -27,6 +25,7 @@ public class CourseController {
 
 
     @RequestMapping(value = "editcor",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes editCourse(CourseTable courseTable){
         courseTableService.eidtCourser(courseTable);
         return ServerRes.OK("修改成功");
@@ -34,6 +33,7 @@ public class CourseController {
 
 
     @RequestMapping(value = "delcor",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes delCourse(String kcid){
         courseTableService.delCourser(kcid);
         return ServerRes.OK("删除成功");
@@ -41,6 +41,7 @@ public class CourseController {
 
 
     @RequestMapping(value = "selectmx",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes selectMx(CourseTable courseTable){
         ServerRes<CourseTable> courseTableServerRes = courseTableService.selectMx(courseTable);
         return ServerRes.success(courseTableServerRes);

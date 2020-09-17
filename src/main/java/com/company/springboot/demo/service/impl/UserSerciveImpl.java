@@ -9,6 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserSerciveImpl implements UserService {
 
@@ -46,5 +48,24 @@ public class UserSerciveImpl implements UserService {
             }
         }
         return ServerRes.error(Result.USER_AND_PHONE_NOT_EXISTS);
+    }
+
+    /**
+     * 学生信息页面List
+     * @return
+     */
+    @Override
+    public ServerRes stuInfo(UserTable userTable ) {
+        List<UserTable> userTables = userTableMapper.stuInfo(userTable);
+        return ServerRes.success(userTables);
+    }
+
+    /**
+     * 学生信息页面 新增
+     * @param userTable
+     */
+    @Override
+    public void addInfo(UserTable userTable) {
+      userTableMapper.insert(userTable);
     }
 }
