@@ -1,8 +1,8 @@
 //forgetBtn --> 页面跳转
-function forgetpwd(){
-	window.open("updatePwd.html");
-	alert(window.location);
-}
+// function forgetpwd(){
+// 	window.location.href="http://localhost:8080/router/updatePwd";
+//
+// }
 
 
 //loginBtn  --> 成功实现页面跳转，失败页面提示
@@ -19,8 +19,9 @@ function loginsuccess(){
 	}else if((pwd_input == "")||(pwd_input == null)){
 		alert("请输入密码");
 		return;
-	}else{
-		
+	}
+	else{
+
 		$.ajax({
     	type:"post",
     	url:"/user/index",
@@ -30,8 +31,8 @@ function loginsuccess(){
     		"password":"pwd_input"
     	},
     	success: function (data) {
-            if (data.resultInfo == "invalid user") {
-                $("#loginBtn").removeAttr("disabled"), 
+            if (data.resultInfo == "invalid username") {
+                $("#loginBtn").removeAttr("disabled"),
                 alert("用户不存在")
             }
             else if (data.resultInfo == "invalid password") {
@@ -41,12 +42,12 @@ function loginsuccess(){
             	input_username_pwd.submit();
                 //window.location.href = "/student/dashboard";
                 window.open("loginSuc.html")
-                
+
             }
-        },
-        
+       },
+
     });
-    
+
 	}
     
     

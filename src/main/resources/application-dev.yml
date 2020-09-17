@@ -29,8 +29,9 @@ spring:
     enabled: true
     encoding: utf-8
     mode: HTML5
-    prefix: classpath:/templates/
-    suffix: .html
+
+    #prefix: classpath:/templates/
+    #suffix: .html
 
 
 mybatis-plus:
