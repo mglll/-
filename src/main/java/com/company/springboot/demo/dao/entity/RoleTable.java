@@ -12,7 +12,7 @@ import java.util.Date;
 public class RoleTable extends Model {
     @TableId(value = "jsid",type = IdType.AUTO)
     private Integer jsid;//角色ID
-    private String roleName;//角色名称
+    private String rolename;//角色名称
     private String del;//删除标志0删除1未删除
     private String createdBy;
     private Date createdTime;

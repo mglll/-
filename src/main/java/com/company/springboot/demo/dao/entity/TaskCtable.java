@@ -14,7 +14,7 @@ public class TaskCtable extends Model {
     @TableId(value = "rwcid",type = IdType.AUTO)
     private Integer rwcid;//任务从ID
     private String rwid;//任务ID
-    private String zTask;//组长任务
+    private String ztask;//组长任务
     private Date startdate;//任务开始日期
     private Date starttime;//任务开始时间
     private Date enddate;//任务结束日期

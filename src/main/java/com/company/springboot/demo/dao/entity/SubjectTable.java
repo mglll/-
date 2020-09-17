@@ -12,7 +12,7 @@ import java.util.Date;
 public class SubjectTable extends Model {
     @TableId(value = "kmid",type = IdType.AUTO)
     private Integer kmid;//科目ID
-    private String kmName;//科目名称
+    private String kmname;//科目名称
     private String del;//删除标志0删除1未删除
     private String createdBy;
     private Date createdTime;

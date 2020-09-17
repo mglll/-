@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.TaskCtable">
         <id column="rwcid" property="rwcid" jdbcType="VARCHAR"/>
         <result column="rwid" property="rwid" jdbcType="VARCHAR" />
-        <result column="zTask" property="zTask" jdbcType="VARCHAR" />
+        <result column="ztask" property="ztask" jdbcType="VARCHAR" />
         <result column="startdate" property="startdate" jdbcType="TIMESTAMP" />
         <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
         <result column="enddate" property="enddate" jdbcType="TIMESTAMP" />
@@ -17,7 +17,7 @@
     </resultMap>
 
     <insert id="addTask">
-        insert into task_table(zTask,startdate,starttime,del)where (#{zTask},#{startdate},#{starttime},#{del})
+        insert into task_table(ztask,startdate,starttime,del)where (#{ztask},#{startdate},#{starttime},#{del})
     </insert>
 
 

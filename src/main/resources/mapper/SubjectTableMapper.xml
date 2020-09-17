@@ -3,7 +3,7 @@
 <mapper namespace="com.company.springboot.demo.dao.SubjectTableMapper">
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.SubjectTable">
         <id column="kmid" property="kmid" jdbcType="VARCHAR"/>
-        <result column="kmName" property="kmName" jdbcType="VARCHAR" />
+        <result column="kmname" property="kmname" jdbcType="VARCHAR" />
         <result column="del" property="del" jdbcType="VARCHAR" />
         <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
