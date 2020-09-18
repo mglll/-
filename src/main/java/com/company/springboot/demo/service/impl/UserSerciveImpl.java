@@ -5,6 +5,7 @@ import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.UserTableMapper;
 import com.company.springboot.demo.dao.entity.UserTable;
 import com.company.springboot.demo.service.UserService;
+import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,5 +68,16 @@ public class UserSerciveImpl implements UserService {
     @Override
     public void addInfo(UserTable userTable) {
       userTableMapper.insert(userTable);
+    }
+
+    /**
+     * 学生选择小组List
+     * @param stuChooseTeam
+     * @return
+     */
+    @Override
+    public ServerRes stuChooseTeam(StuChooseTeam stuChooseTeam) {
+        List<StuChooseTeam> stuChooseTeamList = userTableMapper.studentChooseTeam(stuChooseTeam);
+        return ServerRes.success(stuChooseTeamList);
     }
 }

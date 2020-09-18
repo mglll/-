@@ -31,39 +31,8 @@
     </resultMap>
 
 
-    <update id="updateAfterSaleStatus">
-        update after_sale set after_sale_status = #{status} WHERE id = #{afterSaleId}
-    </update>
-    <select id="listAfterSale" resultMap="BaseResultMap">
-        SELECT
-        question_dt,
-        addressee_nm,
-        addressee_tel,
-        sales_user_name,
-        create_user_id,
-        check_status,
-        checker_user_name
-        FROM
-        after_sale
-        <where>
-            flag = 'T'
-            <if test="addresseeTel != null and addresseeTel != ''">
-                and addressee_tel = #{addresseeTel}
-            </if>
-            <if test="salesUserId != null">
-                and sales_user_id = #{salesUserId}
-            </if>
-            <if test="addresseeNm != null and addresseeNm != ''">
-                and addressee_nm = #{addresseeNm}
-            </if>
-            <if test="begDate !=null || endDate != null">
-                and  question_dt between #{questionBegDate} and #{questionEndDate}
-            </if>
-            <if test="checkStatus != null and checkStatus != ''">
-                and check_status = #{checkStatus}
-            </if>
-        </where>
-    </select>
+
+
     <select id="findAll" resultType="com.company.springboot.demo.dao.entity.CourseTable">
         select * from Course_Table
     </select>

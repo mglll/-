@@ -3,10 +3,7 @@ package com.company.springboot.demo.service.impl;
 import cn.hutool.core.date.DateUtil;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.*;
-import com.company.springboot.demo.dao.entity.TaskCtable;
-import com.company.springboot.demo.dao.entity.TeamZtable;
-import com.company.springboot.demo.dao.entity.UserTable;
-import com.company.springboot.demo.dao.entity.WorkFiowTable;
+import com.company.springboot.demo.dao.entity.*;
 import com.company.springboot.demo.dto.TaskCtableDTO;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
@@ -77,6 +74,15 @@ public class TeamServiceImpl implements TeamService {
         if(byZzid != null){
             teamZTableMapper.updatedel(byZzid);
         }
+    }
+
+    /**
+     * 学生加入小组
+     * @param teamCtable
+     */
+    @Override
+    public void addTeam(TeamCtable teamCtable) {
+
     }
 
 

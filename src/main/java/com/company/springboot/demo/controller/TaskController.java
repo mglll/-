@@ -4,13 +4,11 @@ import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.service.TaskTableService;
+import com.company.springboot.demo.vo.LeaderWriteTask;
 import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/task")
@@ -44,4 +42,16 @@ public class TaskController {
         taskTableService.delTask(rwid);
         return ServerRes.OK("删除成功");
     }
+
+    /**
+     * 组长填写任务页面List
+     * @return
+     */
+    @RequestMapping(value = "/leaderWriteTask",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes leaderWriteTask(LeaderWriteTask leaderWriteTask){
+        ServerRes lwt = taskTableService.leaderWriteTask(leaderWriteTask);
+        return ServerRes.success(lwt);
+    }
+
 }

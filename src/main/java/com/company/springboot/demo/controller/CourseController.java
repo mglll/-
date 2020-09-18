@@ -1,6 +1,5 @@
 package com.company.springboot.demo.controller;
 
-import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.CourseTable;
 import com.company.springboot.demo.service.CourseTableService;

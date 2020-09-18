@@ -24,6 +24,17 @@
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
+
+    <resultMap id="StuChooseTeam" type="com.company.springboot.demo.vo.StuChooseTeam">
+        <id column="zzid" property="zzid" jdbcType="INTEGER"/>
+        <result column="zname" property="zname" jdbcType="VARCHAR" />
+        <result column="kmname" property="kmname" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="startdate" property="startdate" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+
     <sql id="Base_Column_List" >
     ryid,name,stuteaNum, username, password, age,sex, phone, address, nowadd, idNum,politics,honor,synopsis,birth,del,created_by, create_time,updated_by, update_time
   </sql>
@@ -59,6 +70,19 @@
         ryid,name,stuteaNum,address,nowadd,age,sex,phone,idNum,politics,honor,birth,synopsis
         FROM user_table
         WHERE stuteaNum &gt; 20000 and stuteaNum &lt;  30000
+    </select>
+
+    <!--学生选择小组List-->
+    <select id="studentChooseTeam" resultMap="StuChooseTeam">
+     SELECT
+     tz.zzid,tz.zname,sub.kmname,u.name,taskc.startdate
+     FROM
+     team_ztable tz
+     LEFT JOIN subject_table sub on tz.kmid =sub.kmid
+     LEFT JOIN user_table u on tz.ryid = u.ryid
+     LEFT JOIN task_ctable taskc on tz.rwcid = taskc.rwcid
+     where
+     tz.del = '1' and tz.zpronum &lt; '10'
     </select>
 
 

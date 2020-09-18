@@ -5,6 +5,7 @@ import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
 import com.company.springboot.demo.service.UserService;
+import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,11 +46,27 @@ public class UserTableController {
         return ServerRes.success(serverRes);
     }
 
+    /**
+     * 学生信息页面 新增
+     * @param userTable
+     * @return
+     */
     @RequestMapping(value = "/addInfo",method = RequestMethod.POST)
     @ResponseBody
     public ServerRes addInfo(UserTable userTable){
         userService.addInfo(userTable);
         return ServerRes.OK("添加成功");
+    }
+
+    /**
+     * 学生选择小组页面List
+      * @return
+     */
+    @RequestMapping(value = "/stuChooseTeam",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes stuChooseT(StuChooseTeam stuChooseTeam){
+        ServerRes sct = userService.stuChooseTeam(stuChooseTeam);
+        return ServerRes.success(sct);
     }
 
 }

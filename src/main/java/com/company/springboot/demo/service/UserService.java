@@ -2,6 +2,7 @@ package com.company.springboot.demo.service;
 
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.vo.StuChooseTeam;
 
 public interface UserService {
     /**
@@ -32,6 +33,15 @@ public interface UserService {
      * @param userTable
      */
      void  addInfo( UserTable userTable);
+
+    /**
+     * 学生选择小组 List
+     * @param stuChooseTeam
+     * @return
+     */
+     ServerRes stuChooseTeam (StuChooseTeam stuChooseTeam);
+
+
 
 
 

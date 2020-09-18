@@ -29,10 +29,12 @@ public class TeamController {
         teamService.addTeam(addTeamVo);
         return ServerRes.OK("添加成功");
     }
-    @RequestMapping(value = "/addTeam",method = RequestMethod.POST)
+    @RequestMapping(value = "/delTeam",method = RequestMethod.POST)
     @ResponseBody
     public ServerRes updatedel(String id) {
         teamService.updatedel(id);
         return ServerRes.OK("删除成功");
     }
+
+    //学生加入小组
 }

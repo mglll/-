@@ -3,10 +3,12 @@ package com.company.springboot.demo.service.impl;
 import cn.hutool.core.date.DateUtil;
 import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
+import com.company.springboot.demo.dao.TaskCTableMapper;
 import com.company.springboot.demo.dao.TaskZTableMapper;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.dto.TaskDTO;
 import com.company.springboot.demo.service.TaskTableService;
+import com.company.springboot.demo.vo.LeaderWriteTask;
 import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class TaskTableServiceImpl implements TaskTableService {
 
     @Autowired
     TaskZTableMapper taskZTableMapper;
+    @Autowired
+    TaskCTableMapper taskCTableMapper;
 
     @Override
     public ServerRes taskList(TaskVo taskVo) {
@@ -48,6 +52,17 @@ public class TaskTableServiceImpl implements TaskTableService {
         TaskZtable taskZtable = new TaskZtable();
         int i = taskZTableMapper.deleteById(taskZtable.getRwid());
         return i;
+    }
+
+    /**
+     * 组长填写任务页面List
+     * @param leaderWriteTask
+     * @return
+     */
+    @Override
+    public ServerRes leaderWriteTask(LeaderWriteTask leaderWriteTask) {
+        List<LeaderWriteTask> leaderWriteTaskList = taskCTableMapper.leaderWriteTask(leaderWriteTask);
+        return ServerRes.success(leaderWriteTaskList);
     }
 
 }

@@ -3,8 +3,17 @@ package com.company.springboot.demo.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dto.TaskCtableDTO;
+import com.company.springboot.demo.vo.LeaderWriteTask;
+
+import java.util.List;
 
 public interface TaskCTableMapper extends BaseMapper<TaskCtable> {
 
     void addTask(TaskCtableDTO taskCtableDTO);
+
+    /**
+     *组长填写任务页面List
+     * @return
+     */
+    List<LeaderWriteTask> leaderWriteTask(LeaderWriteTask leaderWriteTask);
 }

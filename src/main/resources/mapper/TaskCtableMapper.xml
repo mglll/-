@@ -16,9 +16,32 @@
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
+
+    <resultMap id="LeaderWriteTask" type="com.company.springboot.demo.vo.LeaderWriteTask">
+        <id column="rwcid" property="rwcid" jdbcType="INTEGER"/>
+        <result column="rwid" property="rwid" jdbcType="VARCHAR" />
+        <result column="ryid" property="ryid" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="startdate" property="startdate" jdbcType="VARCHAR" />
+        <result column="enddate" property="enddate" jdbcType="VARCHAR" />
+    </resultMap>
+
+
     <insert id="addTask">
         insert into task_table(ztask,startdate,starttime,del)where (#{ztask},#{startdate},#{starttime},#{del})
     </insert>
+
+
+
+    <select id="leaderWriteTask" resultMap="LeaderWriteTask">
+        SELECT
+            tc.rwcid,tc.rwid,.tc.ryid,u.name,tc.ztask,
+            tc.startdate,tc.enddate
+        FROM
+            task_ctable tc
+        LEFT JOIN user_table u on tc.ryid = u.ryid
+        LEFT JOIN limits_table li on u.ryid = li.ryid WHERE li.role = '4'
+    </select>
 
 
 </mapper>

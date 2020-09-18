@@ -15,9 +15,9 @@ public class TaskCtable extends Model {
     private Integer rwcid;//任务从ID
     private String rwid;//任务ID
     private String ztask;//组长任务
-    private Date startdate;//任务开始日期
+    private String startdate;//任务开始日期
     private Date starttime;//任务开始时间
-    private Date enddate;//任务结束日期
+    private String enddate;//任务结束日期
     private Date endtime;//任务结束时间
     private String del;//删除标志0删除1未删除
     private String createdBy;

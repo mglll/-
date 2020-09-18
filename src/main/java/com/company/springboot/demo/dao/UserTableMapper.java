@@ -2,6 +2,7 @@ package com.company.springboot.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -66,6 +67,13 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      * @return
      */
     List<UserTable> stuInfo(UserTable userTable);
+
+    /**
+     * 学生选择小组List
+     * @param stuChooseTeam
+     * @return
+     */
+    List<StuChooseTeam> studentChooseTeam( StuChooseTeam stuChooseTeam);
 
 
 
