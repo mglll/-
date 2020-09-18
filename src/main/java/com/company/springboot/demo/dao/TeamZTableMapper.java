@@ -2,6 +2,7 @@ package com.company.springboot.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.dao.entity.TeamZtable;
+import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 
 import java.util.List;
@@ -27,4 +28,18 @@ public interface TeamZTableMapper extends BaseMapper<TeamZtable> {
      * @return
      */
     String findByZzid(String zzid);
+
+    /**
+     * 组长分组查询
+     * @param teamcVo
+     * @return
+     */
+    List<TeamcVo> findByfenzu(TeamcVo teamcVo);
+
+    /**
+     * 跟上一个接口一样 这是查询组员
+     * @param teamcVo
+     * @return
+     */
+    List<TeamcVo> findByzuyuan(TeamcVo teamcVo);
 }

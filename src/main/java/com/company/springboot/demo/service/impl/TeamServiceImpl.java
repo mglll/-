@@ -8,16 +8,17 @@ import com.company.springboot.demo.dao.entity.TeamZtable;
 import com.company.springboot.demo.dao.entity.UserTable;
 import com.company.springboot.demo.dao.entity.WorkFiowTable;
 import com.company.springboot.demo.dto.TaskCtableDTO;
+import com.company.springboot.demo.dto.TeamDTO;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -77,6 +78,14 @@ public class TeamServiceImpl implements TeamService {
         if(byZzid != null){
             teamZTableMapper.updatedel(byZzid);
         }
+    }
+
+    @Override
+    public ServerRes fenzuList(TeamcVo teamcVo) {
+        List<TeamcVo> byfenzu = teamZTableMapper.findByfenzu(teamcVo);
+        List<TeamcVo> byzuyuan = teamZTableMapper.findByzuyuan(teamcVo);
+        TeamDTO teamDTO = new TeamDTO(byfenzu,byzuyuan);
+        return ServerRes.success(teamDTO);
     }
 
 

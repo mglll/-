@@ -17,11 +17,22 @@
 
     <resultMap id="TeamzDo" type="com.company.springboot.demo.vo.TeamzVo">
         <result column="zname" property="zname" jdbcType="VARCHAR"/>
-        <result column="kmName" property="kmName" jdbcType="VARCHAR"/>
+        <result column="kmname" property="kmname" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="zpronum" property="zpronum" jdbcType="VARCHAR"/>
         <result column="ztask" property="ztask" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="TeamcDo" type="com.company.springboot.demo.vo.TeamcVo">
+        <result column="zzid" property="zzid" jdbcType="INTEGER" />
+        <result column="zname" property="zname" jdbcType="VARCHAR"/>
+        <result column="kmname" property="kmname" jdbcType="VARCHAR"/>
+        <result column="ryid" property="ryid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="jtask" property="jtask" jdbcType="VARCHAR"/>
+        <result column="createdBy" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="createdTime" property="createdTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <update id="updatedel">
         update team_ztable set del = '0' where id = #{zzid}
@@ -50,6 +61,36 @@ where te.del = '1'
         from team_ztable
         where id = #{zzid}
 
+    </select>
+    <select id="findByfenzu" resultMap="TeamcDo">
+SELECT
+	tz.zname,
+	su.kmname,
+	us.ryid,
+	us. NAME,
+	co.jtask,
+	tz.created_by,
+	tz.created_time
+FROM team_ztable tz
+LEFT JOIN subject_table su ON tz.kmid = su.kmid
+LEFT JOIN user_table us ON tz.ryid = us.ryid
+LEFT JOIN limits_table li ON us.ryid = li.ryid
+LEFT JOIN task_ctable ta ON tz.rwcid = ta.rwcid
+LEFT JOIN task_ztable co ON ta.rwid = co.rwid
+<where>
+	tz.del = '1'
+AND li.role = '3'
+    <if test="zname != null and zname != ''">
+      and zname = #{zname}
+    </if>
+</where>
+    </select>
+    <select id="findByzuyuan" resultMap="TeamcDo">
+        SELECT tc.ryid,bs.name from
+team_ctable tc
+LEFT JOIN user_table bs on tc.ryid = bs.ryid
+LEFT JOIN limits_table bl on bs.ryid = bl.ryid
+WHERE bl.role = '4'
     </select>
 
 
