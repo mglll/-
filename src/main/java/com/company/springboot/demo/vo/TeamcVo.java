@@ -4,15 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamzVo {
+public class TeamcVo {
     private Integer zzid;
     private String zname;
     private String kmname;
+    private String ryid;
     private String name;
-    private String zpronum;
-    private String ztask;
-    private String status;
+    private String jtask;
+    private String createdBy;
+    private Date createdTime;
 }

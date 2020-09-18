@@ -4,6 +4,7 @@ import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.TeamCtable;
 import com.company.springboot.demo.dao.entity.TeamZtable;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface TeamService {
      * @param teamCtable
      */
     void addTeam(TeamCtable teamCtable);
+
+    ServerRes fenzuList(TeamcVo teamcVo);
 
 }

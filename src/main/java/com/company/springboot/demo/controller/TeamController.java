@@ -3,6 +3,7 @@ package com.company.springboot.demo.controller;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,11 +30,17 @@ public class TeamController {
         teamService.addTeam(addTeamVo);
         return ServerRes.OK("添加成功");
     }
+
     @RequestMapping(value = "/delTeam",method = RequestMethod.POST)
-    @ResponseBody
     public ServerRes updatedel(String id) {
         teamService.updatedel(id);
         return ServerRes.OK("删除成功");
+    }
+    @RequestMapping(value = "/fenzuList",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes fenzuList(TeamcVo teamcVo){
+        ServerRes serverRes = teamService.fenzuList(teamcVo);
+        return ServerRes.success(serverRes);
     }
 
     //学生加入小组
