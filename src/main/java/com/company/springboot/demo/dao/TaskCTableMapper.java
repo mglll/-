@@ -16,4 +16,19 @@ public interface TaskCTableMapper extends BaseMapper<TaskCtable> {
      * @return
      */
     List<LeaderWriteTask> leaderWriteTask(LeaderWriteTask leaderWriteTask);
+
+
+
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param rwcid
+     */
+    void  leaderWriteBeginAndOverTime(int rwcid);
+
+    /**
+     * 学生任务信息List
+      * @return
+     */
+   // List<> stuTaskInfo();
+
 }

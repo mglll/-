@@ -65,4 +65,14 @@ public class TaskTableServiceImpl implements TaskTableService {
         return ServerRes.success(leaderWriteTaskList);
     }
 
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param rwcid
+     */
+    @Override
+    public void leaderWriteBeginAndOverTime(int rwcid) {
+        taskCTableMapper.leaderWriteBeginAndOverTime(rwcid);
+    }
+
+
 }
