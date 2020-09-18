@@ -8,6 +8,7 @@ import com.company.springboot.demo.dto.TaskCtableDTO;
 import com.company.springboot.demo.dto.TeamDTO;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.StuChooseTeam;
 import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class TeamServiceImpl implements TeamService {
 
     @Autowired
     TeamZTableMapper teamZTableMapper;
+
+    @Autowired
+    TeamCTableMapper teamCTableMapper;
 
     @Autowired
     WorkFiowTableMapper workFiowTableMapper;
@@ -83,7 +87,12 @@ public class TeamServiceImpl implements TeamService {
      */
     @Override
     public void addTeam(TeamCtable teamCtable) {
-
+        StuChooseTeam stuChooseTeam = new StuChooseTeam();
+        teamCtable.setZzid(stuChooseTeam.getZzid().toString());
+        UserTable userTable = new UserTable();
+        teamCtable.setRyid(userTable.getRyid().toString());
+        teamCtable.setDel("1");
+        teamCTableMapper.insert(teamCtable);
     }
 
     @Override
