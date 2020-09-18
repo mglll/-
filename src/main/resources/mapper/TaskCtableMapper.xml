@@ -4,11 +4,14 @@
     <resultMap id="BaseResultMap" type="com.company.springboot.demo.dao.entity.TaskCtable">
         <id column="rwcid" property="rwcid" jdbcType="VARCHAR"/>
         <result column="rwid" property="rwid" jdbcType="VARCHAR" />
+        <result column="ryid" property="ryid" jdbcType="VARCHAR" />
         <result column="ztask" property="ztask" jdbcType="VARCHAR" />
         <result column="startdate" property="startdate" jdbcType="TIMESTAMP" />
         <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
         <result column="enddate" property="enddate" jdbcType="TIMESTAMP" />
         <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+        <result column="submitstate" property="submitstate" jdbcType="VARCHAR" />
+        <result column="submittasktime" property="submittasktime" jdbcType="TIMESTAMP" />
         <result column="del" property="del" jdbcType="VARCHAR" />
         <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
@@ -31,6 +34,14 @@
         insert into task_table(ztask,startdate,starttime,del)where (#{ztask},#{startdate},#{starttime},#{del})
     </insert>
 
+    <!--组长根据rwcid填写任务开始时间/结束时间-->
+    <update id="leaderWriteBeginAndOverTime">
+        UPDATE task_ctable
+        SET startdate=#{startdate},
+            enddate=#{enddate}
+         WHERE rwcid = #{rwcid}
+
+    </update>
 
 
     <select id="leaderWriteTask" resultMap="LeaderWriteTask">

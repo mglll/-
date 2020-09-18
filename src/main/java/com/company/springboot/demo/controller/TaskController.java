@@ -54,4 +54,14 @@ public class TaskController {
         return ServerRes.success(lwt);
     }
 
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param rwcid
+     */
+    @RequestMapping(value = "leaderWriteBeginAndOverTime",method = RequestMethod.POST)
+    public ServerRes leaderWriteBeginAndOverTime(int rwcid){
+        taskTableService.leaderWriteBeginAndOverTime(rwcid);
+        return ServerRes.OK("修改成功");
+    }
+
 }

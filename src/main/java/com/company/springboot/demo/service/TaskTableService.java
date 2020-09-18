@@ -28,4 +28,10 @@ public interface TaskTableService {
      * @return
      */
     ServerRes leaderWriteTask(LeaderWriteTask leaderWriteTask);
+
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param rwcid
+     */
+    void  leaderWriteBeginAndOverTime(int rwcid);
 }
