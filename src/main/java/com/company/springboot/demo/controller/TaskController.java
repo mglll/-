@@ -5,6 +5,7 @@ import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.service.TaskTableService;
 import com.company.springboot.demo.vo.LeaderWriteTask;
+import com.company.springboot.demo.vo.StuSubmitTaskVo;
 import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,8 +60,30 @@ public class TaskController {
      * @param rwcid
      */
     @RequestMapping(value = "leaderWriteBeginAndOverTime",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes leaderWriteBeginAndOverTime(int rwcid){
         taskTableService.leaderWriteBeginAndOverTime(rwcid);
+        return ServerRes.OK("修改成功");
+    }
+    /**
+     * 学生提交任务页面List
+     * @param stuSubmitTaskVo
+     * @return
+     */
+    @RequestMapping(value = "/stuSubmitTaskList",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes stuSubmitTaskList(StuSubmitTaskVo stuSubmitTaskVo){
+        ServerRes sstl = taskTableService.stuSubmitTaskList(stuSubmitTaskVo);
+        return ServerRes.success(sstl);
+    }
+    /**
+     * 学生任务信息页面-提交按钮-更改状态
+     * @param submitstate
+     */
+    @RequestMapping(value = "/stuUpdateTaskState",method = RequestMethod.POST)
+    @ResponseBody
+    public  ServerRes stuUpdateTaskState(String submitstate,int rwcid){
+        taskTableService.stuUpdateTaskState(submitstate,rwcid);
         return ServerRes.OK("修改成功");
     }
 

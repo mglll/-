@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dto.TaskCtableDTO;
 import com.company.springboot.demo.vo.LeaderWriteTask;
+import com.company.springboot.demo.vo.StuSubmitTaskVo;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public interface TaskCTableMapper extends BaseMapper<TaskCtable> {
      * 学生任务信息List
       * @return
      */
-   // List<> stuTaskInfo();
+    List<StuSubmitTaskVo> stuSubmitTaskList(StuSubmitTaskVo stuSubmitTaskVo);
+
+    /**
+     * 学生任务信息页面-提交按钮-更改状态
+     * @param submitstate
+     * @param rwcid
+     */
+    void stuUpdateTaskState(String submitstate,int rwcid);
 
 }

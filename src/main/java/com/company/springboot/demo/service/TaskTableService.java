@@ -3,6 +3,7 @@ package com.company.springboot.demo.service;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.vo.LeaderWriteTask;
+import com.company.springboot.demo.vo.StuSubmitTaskVo;
 import com.company.springboot.demo.vo.TaskVo;
 
 import java.util.List;
@@ -34,4 +35,17 @@ public interface TaskTableService {
      * @param rwcid
      */
     void  leaderWriteBeginAndOverTime(int rwcid);
+
+    /**
+     * 学生提交任务页面List
+     * @param stuSubmitTaskVo
+     * @return
+     */
+    ServerRes stuSubmitTaskList(StuSubmitTaskVo stuSubmitTaskVo);
+    /**
+     * 学生任务信息页面-提交按钮-更改状态
+     * @param submitstate
+     * @param rwcid
+     */
+    void stuUpdateTaskState(String submitstate,int rwcid);
 }

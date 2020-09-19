@@ -9,6 +9,7 @@ import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.dto.TaskDTO;
 import com.company.springboot.demo.service.TaskTableService;
 import com.company.springboot.demo.vo.LeaderWriteTask;
+import com.company.springboot.demo.vo.StuSubmitTaskVo;
 import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,25 @@ public class TaskTableServiceImpl implements TaskTableService {
     @Override
     public void leaderWriteBeginAndOverTime(int rwcid) {
         taskCTableMapper.leaderWriteBeginAndOverTime(rwcid);
+    }
+
+    /**
+     * 学生提交任务页面List
+     * @param stuSubmitTaskVo
+     * @return
+     */
+    @Override
+    public ServerRes stuSubmitTaskList(StuSubmitTaskVo stuSubmitTaskVo) {
+        List<StuSubmitTaskVo> stuSubmitTaskVoList =taskCTableMapper.stuSubmitTaskList(stuSubmitTaskVo);
+        return ServerRes.success(stuSubmitTaskVoList);
+    }
+    /**
+     * 学生任务信息页面-提交按钮-更改状态
+     * @param submitstate
+     */
+    @Override
+    public void stuUpdateTaskState(String submitstate,int rwcid) {
+        taskCTableMapper.stuUpdateTaskState(submitstate,rwcid);
     }
 
 
