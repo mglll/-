@@ -30,6 +30,18 @@
     </resultMap>
 
 
+    <resultMap id="StuSubmitTaskVo" type="com.company.springboot.demo.vo.StuSubmitTaskVo">
+        <id column="rwcid" property="rwcid" jdbcType="INTEGER"/>
+        <result column="ztask" property="ztask" jdbcType="VARCHAR" />
+        <result column="kmid" property="kmid" jdbcType="VARCHAR" />
+        <result column="kmname" property="kmname" jdbcType="VARCHAR" />
+        <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+        <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+        <result column="submitstate" property="submitstate" jdbcType="VARCHAR" />
+        <result column="submittasktime" property="submittasktime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
     <insert id="addTask">
         insert into task_table(ztask,startdate,starttime,del)where (#{ztask},#{startdate},#{starttime},#{del})
     </insert>
@@ -43,6 +55,13 @@
 
     </update>
 
+    <!--学生任务信息页面-提交按钮-更改状态-->
+    <update id="stuUpdateTaskState">
+        update  task_ctable
+        set submitstate=#{submitstate}
+        where rwcid = #{rwcid}
+    </update>
+
 
     <select id="leaderWriteTask" resultMap="LeaderWriteTask">
         SELECT
@@ -52,6 +71,21 @@
             task_ctable tc
         LEFT JOIN user_table u on tc.ryid = u.ryid
         LEFT JOIN limits_table li on u.ryid = li.ryid WHERE li.role = '4'
+        where
+        tc.del = '1'
+    </select>
+
+    <!--学生任务信息List-->
+    <select id="stuSubmitTaskList" resultMap="StuSubmitTaskVo">
+        select
+         taskc.rwcid,taskc.ztask,teamz.kmid,sub.kmname,
+         taskc.starttime,taskc.endtime,taskc.submitstate,taskc.submittasktime
+        FROM
+          task_ctable taskc
+        LEFT JOIN team_ztable teamz on taskc.rwcid = teamz.rwcid
+        LEFT JOIN  subject_table sub on teamz.kmid = sub.kmid
+        where
+        taskc.del = '1'
     </select>
 
 
