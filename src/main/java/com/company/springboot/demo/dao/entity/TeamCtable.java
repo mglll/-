@@ -14,6 +14,8 @@ public class TeamCtable extends Model {
     private Integer zcid;//组从ID
     private String zzid;//组主ID
     private String ryid;//组员
+    private String grade;//评分
+    private String remark;//评语
     private String del;//删除标志0删除1未删除
     private String createdBy;
     private Date createdTime;

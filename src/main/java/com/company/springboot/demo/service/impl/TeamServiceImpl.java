@@ -7,10 +7,7 @@ import com.company.springboot.demo.dao.entity.*;
 import com.company.springboot.demo.dto.TaskCtableDTO;
 import com.company.springboot.demo.dto.TeamDTO;
 import com.company.springboot.demo.service.TeamService;
-import com.company.springboot.demo.vo.AddTeamVo;
-import com.company.springboot.demo.vo.StuChooseTeam;
-import com.company.springboot.demo.vo.TeamcVo;
-import com.company.springboot.demo.vo.TeamzVo;
+import com.company.springboot.demo.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,7 +83,7 @@ public class TeamServiceImpl implements TeamService {
      * @param teamCtable
      */
     @Override
-    public void addTeam(TeamCtable teamCtable) {
+    public void addsTeam(TeamCtable teamCtable) {
         StuChooseTeam stuChooseTeam = new StuChooseTeam();
         teamCtable.setZzid(stuChooseTeam.getZzid().toString());
         UserTable userTable = new UserTable();
@@ -101,6 +98,21 @@ public class TeamServiceImpl implements TeamService {
         List<TeamcVo> byzuyuan = teamZTableMapper.findByzuyuan(teamcVo);
         TeamDTO teamDTO = new TeamDTO(byfenzu,byzuyuan);
         return ServerRes.success(teamDTO);
+    }
+
+    @Override
+    public ServerRes findBytask(TaskcVo taskcVo) {
+        List<TaskcVo> bytask = teamCTableMapper.findBytask(taskcVo);
+        return ServerRes.success(bytask);
+    }
+
+    @Override
+    public int updateping(TeamCtable teamCtable) {
+        int updateping = teamCTableMapper.updateping(teamCtable);
+        if(updateping == 1){
+            teamCTableMapper.updatestutas(teamCtable.getRyid());
+        }
+        return updateping;
     }
 
 

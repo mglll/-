@@ -6,13 +6,34 @@
         <result column="zzid" property="zzid" jdbcType="VARCHAR" />
         <result column="ryid" property="ryid" jdbcType="VARCHAR" />
         <result column="del" property="del" jdbcType="VARCHAR" />
+        <result column="grade" property="grade" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
         <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
         <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
-
-
+    <resultMap id="TaskcDo" type="com.company.springboot.demo.vo.TaskcVo">
+        <result column="ztask" property="ztask" jdbcType="VARCHAR"/>
+        <result column="ryid" property="ryid" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="starttime" property="starttime" jdbcType="TIMESTAMP"/>
+        <result column="endtime" property="endtime" jdbcType="TIMESTAMP"/>
+        <result column="submittasktime" property="submittasktime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <update id="updateping">
+        update team_ctable set grade = #{grade},remark = #{remark} where ryid = #{ryid}
+    </update>
+    <update id="updatestutas">
+        update course_table set status = '2' where ryid = #{ryid}
+    </update>
+    <select id="findBytask" resultMap="TaskcDo">
+SELECT ta.ztask,us.ryid,us.name,ta.starttime,ta.endtime,ta.submittasktime
+from task_ctable ta LEFT JOIN team_ztable te on ta.rwcid = te.rwcid
+LEFT JOIN user_table us on te.ryid = us.ryid
+LEFT JOIN limits_table li on us.ryid = li.ryid
+WHERE li.role = '4'
+    </select>
 
 
 </mapper>

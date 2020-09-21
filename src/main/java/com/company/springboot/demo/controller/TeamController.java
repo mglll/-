@@ -1,8 +1,10 @@
 package com.company.springboot.demo.controller;
 
 import com.company.springboot.demo.common.ServerRes;
+import com.company.springboot.demo.dao.entity.TeamCtable;
 import com.company.springboot.demo.service.TeamService;
 import com.company.springboot.demo.vo.AddTeamVo;
+import com.company.springboot.demo.vo.TaskcVo;
 import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +46,24 @@ public class TeamController {
     }
 
     //学生加入小组
+    @RequestMapping(value = "/addTeam",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes addTeam(TeamCtable teamCtable) {
+        teamService.addsTeam(teamCtable);
+        return ServerRes.OK("添加成功");
+    }
+
+    @RequestMapping(value = "/addTeam",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes findBytask(TaskcVo taskcVo) {
+        ServerRes bytask = teamService.findBytask(taskcVo);
+        return ServerRes.success(bytask);
+    }
+    @RequestMapping(value = "/updateping",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes updateping(TeamCtable teamCtable) {
+        teamService.updateping(teamCtable);
+        return ServerRes.OK("点评成功");
+    }
+
 }
