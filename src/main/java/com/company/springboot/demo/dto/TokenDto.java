@@ -1,16 +1,17 @@
-package com.company.springboot.demo.dao.entity;
+package com.company.springboot.demo.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.company.springboot.demo.dao.entity.UserTable;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Data
-@EqualsAndHashCode
-public class UserTable extends Model {
-    @TableId(value = "ryid",type = IdType.AUTO)
+@AllArgsConstructor
+@NoArgsConstructor
+public class TokenDto {
+
     private Integer ryid;//人员ID
     private String name;//姓名
     private String stuteanum;//学号/工号
@@ -32,4 +33,5 @@ public class UserTable extends Model {
     private Date createdTime;
     private String updatedBy;
     private Date updatedTime;
+    private String token;
 }

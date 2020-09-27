@@ -17,21 +17,25 @@ public class ServerRes<T> implements Serializable {
 
     private static String ERROR = "错误";
 
-    private int status;
+    private int code;
     private String msg;
     private T data;
 
-    public ServerRes(int status, String msg, T data) {
-        this.status = status;
+    public ServerRes(int code, String msg, T data) {
+        this.code = code;
         this.msg = msg;
         this.data = data;
     }
-    private ServerRes(int status, String msg) {
-        this.status = status;
+    private ServerRes(int code,T data) {
+        this.code = code;
+        this.data = data;
+    }
+    private ServerRes(int code, String msg) {
+        this.code = code;
         this.msg = msg;
     }
-    private ServerRes(int status) {
-        this.status = status;
+    private ServerRes(int code) {
+        this.code = code;
     }
     //使用静态方法
     public static<T>  ServerRes<T> success(Result result,T data){
@@ -64,8 +68,8 @@ public class ServerRes<T> implements Serializable {
     public static<T> ServerRes<T> error(){
         return new ServerRes(Result.RESULT_ERROR.getCode(),Result.RESULT_ERROR.getMsg());
     }
-    public int getStatus() {
-        return status;
+    public int getcode() {
+        return code;
     }
 
     public String getMsg() {
@@ -79,9 +83,20 @@ public class ServerRes<T> implements Serializable {
     @Override
     public String toString() {
         return "ServerRes{" +
-                "status=" + status +
+                "code=" + code +
                 ", msg='" + msg + '\'' +
                 ", data=" + data +
                 '}';
+    }
+
+    /*
+ 其他返回类型
+ 例如：
+ ILLEGAL_ARGUMENT(2,"ILLEGAL_ARGUMENT"),
+ NEED_LOGIN(20,"NEED_LOGIN");
+ 设定一个通用的返回应答对象的方法
+  */
+    public static<T> ServerRes<T> createErrorCodeMsg(int errCode,String errMsg) {
+        return new ServerRes<T>(errCode, errMsg);
     }
 }

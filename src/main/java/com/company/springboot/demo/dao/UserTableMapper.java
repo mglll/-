@@ -1,6 +1,7 @@
 package com.company.springboot.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
 import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.ibatis.annotations.Param;
@@ -16,6 +17,13 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      * @return
      */
     UserTable login(@Param("username") String username,@Param("password") String password);
+
+    /**
+     * 通过用户名查找电话
+     * @param username
+     * @return
+     */
+    String selectPhoneByUsername(String username);
 
     /**
      * 修改新密码
@@ -60,7 +68,32 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      */
     String checkid(@Param("name") String name);
 
+    /**
+     * 忘记密码，根据提示问题，验证答案
+     * @param username
+     * @param phone
+     * @param age
+     * @return
+     */
+    int checkAnswer(@Param("username") String username,
+                    @Param("phone") String phone,
+                    @Param("age") String age);
 
+    /**
+     * 登录时修改密码，根据id查询密码
+     * @param password
+     * @param ryid
+     * @return
+     */
+    int checkPassword(@Param("password")String password,@Param("ryid")Integer ryid);
+
+    /**
+     * 修改个人信息，校验phone存不存在
+     * @param phone
+     * @param ryid
+     * @return
+     */
+    int checkPhoneByRyid(@Param("phone")String phone,@Param("ryid")Integer ryid);
     /**
      * 学生信息页面List
      * @param userTable

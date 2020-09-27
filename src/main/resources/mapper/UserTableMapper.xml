@@ -14,9 +14,10 @@
         <result column="nowadd" property="nowadd" jdbcType="VARCHAR" />
         <result column="idnum" property="idnum" jdbcType="VARCHAR" />
         <result column="politics" property="politics" jdbcType="VARCHAR" />
+        <result column="role" property="role" jdbcType="VARCHAR" />
         <result column="honor" property="honor" jdbcType="VARCHAR" />
         <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
-        <result column="birth" property="birth" jdbcType="TIMESTAMP" />
+        <result column="birth" property="birth" jdbcType="VARCHAR" />
         <result column="del" property="del" jdbcType="VARCHAR" />
         <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
@@ -36,11 +37,11 @@
 
 
     <sql id="Base_Column_List" >
-    ryid,name,stuteaNum, username, password, age,sex, phone, address, nowadd, idNum,politics,honor,synopsis,birth,del,created_by, create_time,updated_by, update_time
+    ryid,name,stuteaNum, username, password, role, age,sex, phone, address, nowadd, idNum,politics,honor,synopsis,birth,del,created_by, created_time,updated_by, updated_time
   </sql>
 
     <update id="modifyPassword" parameterType="map">
-    update user_table set password = #{newPassword} where username = #{username}
+    update user_table set password = #{newPassword},updated_time = now() where username = #{username}
     </update>
     <update id="setNewPassword" parameterType="map">
         update user_table set password = #{password} where username = #{username}
@@ -48,7 +49,7 @@
 
     <select id="login" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"/>
-        from user_table where ryid = #{ryid}
+        from user_table where username = #{username} and password = #{password}
     </select>
 
     <select id="getPasswordByName" parameterType="map" resultType="java.lang.String">
@@ -83,6 +84,23 @@
      LEFT JOIN task_ctable taskc on tz.rwcid = taskc.rwcid
      where
      tz.del = '1' and tz.zpronum &lt; '10'
+    </select>
+    <select id="selectPhoneByUsername" resultType="java.lang.String">
+        select phone from user_table where username = #{username}
+    </select>
+    <select id="checkAnswer" resultType="java.lang.Integer">
+          select count(1) from
+    user_table where username=#{username}
+    and
+    phone=#{phone}
+    and
+    age=#{age}
+    </select>
+    <select id="checkPassword" resultType="java.lang.Integer">
+        select count(1) from user_table where ryid = #{ryid} and password = #{password}
+    </select>
+    <select id="checkPhoneByRyid" resultType="java.lang.Integer">
+        select count(1) from user_table where phone = #{phone} and ryid != #{ryid}
     </select>
 
 

@@ -1,12 +1,18 @@
 package com.company.springboot.demo.common;
 
 public interface Const {
-    String CURRENT_USER = "current_user";
+   public static final String CURRENT_USER = "current_user";
 
     interface Role{
-        int ADMIN = 0;
-        int TEACHER = 1;
-        int LEADER = 2;
-        int STUDENT = 3;
+        String ADMIN = "1";
+        String TEACHER = "2";
+        String LEADER = "3";
+        String STUDENT = "4";
+        String FUZEREN = "5";
+    }
+
+    interface ValidType{
+        String PHONE = "phone";
+        String USERNAME = "username";
     }
 }

@@ -34,6 +34,7 @@ public class TeamController {
     }
 
     @RequestMapping(value = "/delTeam",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes updatedel(String id) {
         teamService.updatedel(id);
         return ServerRes.OK("删除成功");
@@ -46,14 +47,14 @@ public class TeamController {
     }
 
     //学生加入小组
-    @RequestMapping(value = "/addTeam",method = RequestMethod.POST)
+    @RequestMapping(value = "/addsTeam",method = RequestMethod.POST)
     @ResponseBody
     public ServerRes addTeam(TeamCtable teamCtable) {
         teamService.addsTeam(teamCtable);
         return ServerRes.OK("添加成功");
     }
 
-    @RequestMapping(value = "/addTeam",method = RequestMethod.POST)
+    @RequestMapping(value = "/findBytask",method = RequestMethod.POST)
     @ResponseBody
     public ServerRes findBytask(TaskcVo taskcVo) {
         ServerRes bytask = teamService.findBytask(taskcVo);
