@@ -6,6 +6,7 @@ import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.common.TokenCache;
 import com.company.springboot.demo.dao.UserTableMapper;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.dto.TokenDto;
 import com.company.springboot.demo.service.UserService;
 import com.company.springboot.demo.util.MD5Utils;
 import com.company.springboot.demo.vo.StuChooseTeam;
@@ -22,7 +23,7 @@ public class UserSerciveImpl implements UserService {
     @Autowired
     UserTableMapper userTableMapper;
     @Override
-    public ServerRes<UserTable> login(String username, String password) {
+    public ServerRes<TokenDto> login(String username, String password) {
         //判断用户是否存在
         int resultCount = userTableMapper.checkUsername(username);
         if(resultCount == 0){
@@ -31,13 +32,15 @@ public class UserSerciveImpl implements UserService {
         }
 //        String md5Password = MD5Utils.MD5EncodeUtf8(password);
         //用户登录
-        UserTable userTable = userTableMapper.login(username,password);
+        TokenDto userTable = userTableMapper.login(username,password);
         if(userTable == null){
             return ServerRes.error(Result.PASSWORD_ERROR);
         }
-
+        String forgetToken = UUID.randomUUID().toString();
+        TokenCache.setkey(TokenCache.TOKEN_PREFIX+username,forgetToken);
         //校验密码
         userTable.setPassword(StringUtils.EMPTY);
+        userTable.setToken(forgetToken);
         return ServerRes.success(Result.LOGIN_SUCCESS,userTable);
     }
 

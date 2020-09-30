@@ -2,6 +2,7 @@ package com.company.springboot.demo.service;
 
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.dto.TokenDto;
 import com.company.springboot.demo.vo.StuChooseTeam;
 
 public interface UserService {
@@ -11,7 +12,7 @@ public interface UserService {
      * @param password
      * @return
      */
-    public ServerRes<UserTable> login(String username, String password);
+    public ServerRes<TokenDto> login(String username, String password);
 
     /**
      * 用户注册

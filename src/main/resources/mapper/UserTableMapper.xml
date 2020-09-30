@@ -25,6 +25,31 @@
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
+    <resultMap id="Tokendo" type="com.company.springboot.demo.dto.TokenDto">
+        <id column="ryid" property="ryid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="stuteanum" property="stuteanum" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="nowadd" property="nowadd" jdbcType="VARCHAR" />
+        <result column="idnum" property="idnum" jdbcType="VARCHAR" />
+        <result column="politics" property="politics" jdbcType="VARCHAR" />
+        <result column="role" property="role" jdbcType="VARCHAR" />
+        <result column="honor" property="honor" jdbcType="VARCHAR" />
+        <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+        <result column="birth" property="birth" jdbcType="VARCHAR" />
+        <result column="del" property="del" jdbcType="VARCHAR" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+        <result column="token" property="token" jdbcType="TIMESTAMP" />
+    </resultMap>
+
 
     <resultMap id="StuChooseTeam" type="com.company.springboot.demo.vo.StuChooseTeam">
         <id column="zzid" property="zzid" jdbcType="INTEGER"/>
@@ -47,7 +72,7 @@
         update user_table set password = #{password} where username = #{username}
     </update>
 
-    <select id="login" resultMap="BaseResultMap">
+    <select id="login" resultMap="Tokendo">
         select <include refid="Base_Column_List"/>
         from user_table where username = #{username} and password = #{password}
     </select>

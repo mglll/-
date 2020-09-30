@@ -3,6 +3,7 @@ package com.company.springboot.demo.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.dto.TokenDto;
 import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +17,7 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      * @param password
      * @return
      */
-    UserTable login(@Param("username") String username,@Param("password") String password);
+    TokenDto login(@Param("username") String username, @Param("password") String password);
 
     /**
      * 通过用户名查找电话

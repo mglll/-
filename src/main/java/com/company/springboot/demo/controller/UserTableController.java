@@ -5,6 +5,7 @@ import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.common.TokenCache;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.dto.TokenDto;
 import com.company.springboot.demo.service.UserService;
 import com.company.springboot.demo.vo.StuChooseTeam;
 import org.apache.commons.lang3.StringUtils;
@@ -31,11 +32,11 @@ public class UserTableController {
      */
     @RequestMapping(value = "/index",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes<UserTable> index(@RequestBody UserTable userTable, HttpSession session){
+    public ServerRes<TokenDto> index(@RequestBody UserTable userTable, HttpSession session){
         if(StringUtils.isBlank(userTable.getUsername())||StringUtils.isBlank(userTable.getPassword())){
             return ServerRes.error(Result.ILLEGLE_ARGUMENTS);
         }
-        ServerRes<UserTable> index = userService.login(userTable.getUsername(), userTable.getPassword());
+        ServerRes<TokenDto> index = userService.login(userTable.getUsername(), userTable.getPassword());
         if(index.getcode() == Result.LOGIN_SUCCESS.getCode()){
 
             session.setAttribute(Const.CURRENT_USER ,index.getData());
@@ -105,8 +106,8 @@ public class UserTableController {
      */
     @RequestMapping(value = "/getUserInfo",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes<UserTable> getUserInfo(HttpSession session){
-        UserTable userTable = (UserTable) session.getAttribute(Const.CURRENT_USER);
+    public ServerRes<TokenDto> getUserInfo(HttpSession session){
+        TokenDto userTable = (TokenDto) session.getAttribute(Const.CURRENT_USER);
         if(userTable != null){
             return ServerRes.success(userTable);
         }

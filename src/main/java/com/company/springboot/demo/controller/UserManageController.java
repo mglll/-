@@ -4,6 +4,7 @@ import com.company.springboot.demo.common.Const;
 import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.entity.UserTable;
+import com.company.springboot.demo.dto.TokenDto;
 import com.company.springboot.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +30,10 @@ public class UserManageController {
      */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes<UserTable> login(String username, String password, HttpSession session){
-        ServerRes<UserTable> userTableServerRes = userService.login(username,password);
+    public ServerRes<TokenDto> login(String username, String password, HttpSession session){
+        ServerRes<TokenDto> userTableServerRes = userService.login(username,password);
         if(userTableServerRes.getcode() == Result.LOGIN_SUCCESS.getCode()){
-            UserTable userTable = userTableServerRes.getData();
+            TokenDto userTable = userTableServerRes.getData();
             if(Const.Role.ADMIN == userTable.getRole()){
                 //说明登录的是管理员
                 session.setAttribute(Const.CURRENT_USER,userTable);
