@@ -41,13 +41,13 @@
 
     <select id="teamlist" resultMap="TeamzDo">
 SELECT
-    te.zzid
+    te.zzid,
 	te.zname,
 	su.kmname,
-	ur. NAME,
+	ur.NAME,
 	te.zpronum,
 	co.ztask,
-	te. STATUS
+	te.STATUS
 FROM
 	team_ztable te
 LEFT JOIN subject_table su ON te.kmid = su.kmid

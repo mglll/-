@@ -225,4 +225,14 @@ public class UserSerciveImpl implements UserService {
         List<StuChooseTeam> stuChooseTeamList = userTableMapper.studentChooseTeam(stuChooseTeam);
         return ServerRes.success(stuChooseTeamList);
     }
+    /**
+     * 管理员--人员信息列表
+     * @param userTable
+     * @return
+     */
+    @Override
+    public ServerRes findUserInfo(UserTable userTable) {
+        List<UserTable> userTables = userTableMapper.findUserInfo(userTable);
+        return ServerRes.success(userTables);
+    }
 }

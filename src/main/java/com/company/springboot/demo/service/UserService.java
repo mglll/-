@@ -104,6 +104,13 @@ public interface UserService {
      */
      ServerRes stuChooseTeam (StuChooseTeam stuChooseTeam);
 
+    /**
+     * 管理员--人员信息列表
+     * @param userTable
+     * @return
+     */
+    ServerRes  findUserInfo(UserTable userTable);
+
 
 
 

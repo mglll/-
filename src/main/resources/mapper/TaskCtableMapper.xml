@@ -27,6 +27,7 @@
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="startdate" property="startdate" jdbcType="VARCHAR" />
         <result column="enddate" property="enddate" jdbcType="VARCHAR" />
+        <result column="ztask" property="ztask" jdbcType="VARCHAR" />
     </resultMap>
 
 
@@ -71,8 +72,8 @@
             task_ctable tc
         LEFT JOIN user_table u on tc.ryid = u.ryid
         LEFT JOIN limits_table li on u.ryid = li.ryid WHERE li.role = '4'
-        where
-        tc.del = '1'
+--         where
+--         tc.del = '1'
     </select>
 
     <!--学生任务信息List-->

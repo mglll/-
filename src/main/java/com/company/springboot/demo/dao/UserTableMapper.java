@@ -109,6 +109,13 @@ public interface UserTableMapper extends BaseMapper<UserTable> {
      */
     List<StuChooseTeam> studentChooseTeam( StuChooseTeam stuChooseTeam);
 
+    /**
+     * 管理员--人员信息列表
+     * @param userTable
+     * @return
+     */
+    List<UserTable> findUserInfo(UserTable userTable);
+
 
 
 }

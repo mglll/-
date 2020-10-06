@@ -19,6 +19,7 @@ public class TaskController {
     TaskTableService taskTableService;
 
     @RequestMapping(value = "/taskst",method = RequestMethod.POST)
+    @ResponseBody
     public ServerRes taskList(TaskVo taskVo){
         ServerRes serverRes = taskTableService.taskList(taskVo);
         return ServerRes.success(serverRes);
@@ -59,7 +60,7 @@ public class TaskController {
      * 组长根据rwcid填写任务开始时间/结束时间
      * @param rwcid
      */
-    @RequestMapping(value = "leaderWriteBeginAndOverTime",method = RequestMethod.POST)
+    @RequestMapping(value = "/leaderWriteBeginAndOverTime",method = RequestMethod.POST)
     @ResponseBody
     public ServerRes leaderWriteBeginAndOverTime(int rwcid){
         taskTableService.leaderWriteBeginAndOverTime(rwcid);

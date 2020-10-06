@@ -242,4 +242,16 @@ public class UserTableController {
         return ServerRes.success(sct);
     }
 
+    /**
+     * 管理员--人员信息列表
+     * @param userTable
+     * @return
+     */
+    @RequestMapping(value = "findUserInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes findUserInfo(UserTable userTable){
+        ServerRes serverRes =userService.findUserInfo(userTable);
+        return ServerRes.success(serverRes);
+    }
+
 }
