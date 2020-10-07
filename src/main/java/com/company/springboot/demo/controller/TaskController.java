@@ -2,6 +2,7 @@ package com.company.springboot.demo.controller;
 
 import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
+import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.service.TaskTableService;
 import com.company.springboot.demo.vo.LeaderWriteTask;
@@ -57,13 +58,26 @@ public class TaskController {
     }
 
     /**
+     * 组长删除任务
+     * @param taskCtable
+     * @return
+     */
+    @RequestMapping(value = "teamLeaderdelPlan",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes teamLeaderdelPlan(@RequestBody TaskCtable taskCtable){
+        int result =  taskTableService.teamLeaderdelPlan(taskCtable.getRwcid());
+        return result == 1? ServerRes.OK("删除成功"):ServerRes.error("删除失败");
+    }
+
+
+    /**
      * 组长根据rwcid填写任务开始时间/结束时间
      * @param rwcid
      */
     @RequestMapping(value = "/leaderWriteBeginAndOverTime",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes leaderWriteBeginAndOverTime(int rwcid){
-        taskTableService.leaderWriteBeginAndOverTime(rwcid);
+    public ServerRes leaderWriteBeginAndOverTime(@RequestBody TaskCtable taskCtable){
+        taskTableService.leaderWriteBeginAndOverTime(taskCtable);
         return ServerRes.OK("修改成功");
     }
     /**

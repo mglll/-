@@ -5,6 +5,7 @@ import com.company.springboot.demo.common.Result;
 import com.company.springboot.demo.common.ServerRes;
 import com.company.springboot.demo.dao.TaskCTableMapper;
 import com.company.springboot.demo.dao.TaskZTableMapper;
+import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.dto.TaskDTO;
 import com.company.springboot.demo.service.TaskTableService;
@@ -14,6 +15,7 @@ import com.company.springboot.demo.vo.TaskVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class TaskTableServiceImpl implements TaskTableService {
     TaskZTableMapper taskZTableMapper;
     @Autowired
     TaskCTableMapper taskCTableMapper;
+    @Autowired
+    TaskTableService taskTableService;
 
     @Override
     public ServerRes taskList(TaskVo taskVo) {
@@ -67,12 +71,24 @@ public class TaskTableServiceImpl implements TaskTableService {
     }
 
     /**
-     * 组长根据rwcid填写任务开始时间/结束时间
+     * 组长删除任务
      * @param rwcid
+     * @return
      */
     @Override
-    public void leaderWriteBeginAndOverTime(int rwcid) {
-        taskCTableMapper.leaderWriteBeginAndOverTime(rwcid);
+    public int teamLeaderdelPlan(Integer rwcid) {
+        int a = taskCTableMapper.deleteById(rwcid);
+        return a;
+    }
+
+
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param
+     */
+    @Override
+    public void leaderWriteBeginAndOverTime(TaskCtable taskCtable) {
+        taskCTableMapper.leaderWriteBeginAndOverTime(taskCtable);
     }
 
     /**

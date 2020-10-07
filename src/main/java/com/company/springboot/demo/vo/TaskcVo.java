@@ -17,5 +17,7 @@ public class TaskcVo {
     private Date starttime;
     private Date endtime;
     private Date submittasktime;
+    private String grade;
+    private String remark;
 
 }

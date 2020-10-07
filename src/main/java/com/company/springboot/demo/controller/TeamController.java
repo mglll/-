@@ -9,6 +9,7 @@ import com.company.springboot.demo.vo.TeamcVo;
 import com.company.springboot.demo.vo.TeamzVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,9 +63,9 @@ public class TeamController {
     }
     @RequestMapping(value = "/updateping",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes updateping(TeamCtable teamCtable) {
-        teamService.updateping(teamCtable);
-        return ServerRes.OK("点评成功");
+    public ServerRes updateping(@RequestBody  TeamCtable teamCtable) {
+        int result = teamService.updateping(teamCtable);
+        return result == 1? ServerRes.OK("评价成功"):ServerRes.error("评价失败");
     }
 
 }

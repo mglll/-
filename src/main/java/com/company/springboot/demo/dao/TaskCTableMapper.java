@@ -18,13 +18,17 @@ public interface TaskCTableMapper extends BaseMapper<TaskCtable> {
      */
     List<LeaderWriteTask> leaderWriteTask(LeaderWriteTask leaderWriteTask);
 
-
+//    /**
+//     * 组长删除任务
+//     * @param
+//     */
+//    int teamLeaderdelPlan(Integer rwcid);
 
     /**
      * 组长根据rwcid填写任务开始时间/结束时间
-     * @param rwcid
+     *
      */
-    void  leaderWriteBeginAndOverTime(int rwcid);
+    void  leaderWriteBeginAndOverTime(TaskCtable taskCtable);
 
     /**
      * 学生任务信息List

@@ -25,8 +25,8 @@
         <result column="rwid" property="rwid" jdbcType="VARCHAR" />
         <result column="ryid" property="ryid" jdbcType="VARCHAR" />
         <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="startdate" property="startdate" jdbcType="VARCHAR" />
-        <result column="enddate" property="enddate" jdbcType="VARCHAR" />
+        <result column="starttime" property="starttime" jdbcType="VARCHAR" />
+        <result column="endtime" property="endtime" jdbcType="VARCHAR" />
         <result column="ztask" property="ztask" jdbcType="VARCHAR" />
     </resultMap>
 
@@ -50,8 +50,8 @@
     <!--组长根据rwcid填写任务开始时间/结束时间-->
     <update id="leaderWriteBeginAndOverTime">
         UPDATE task_ctable
-        SET startdate=#{startdate},
-            enddate=#{enddate}
+        SET starttime=#{starttime},
+            endtime=#{endtime}
          WHERE rwcid = #{rwcid}
 
     </update>
@@ -63,11 +63,16 @@
         where rwcid = #{rwcid}
     </update>
 
+    <!--&lt;!&ndash;组长删除任务&ndash;&gt;-->
+    <!--<delete id="teamLeaderdelPlan">-->
+      <!--DELETE FROM task_ctable where rwcid = #{rwcid};-->
+    <!--</delete>-->
+
 
     <select id="leaderWriteTask" resultMap="LeaderWriteTask">
         SELECT
             tc.rwcid,tc.rwid,.tc.ryid,u.name,tc.ztask,
-            tc.startdate,tc.enddate
+            tc.starttime,tc.endtime
         FROM
             task_ctable tc
         LEFT JOIN user_table u on tc.ryid = u.ryid

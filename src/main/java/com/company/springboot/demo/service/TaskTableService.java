@@ -1,6 +1,7 @@
 package com.company.springboot.demo.service;
 
 import com.company.springboot.demo.common.ServerRes;
+import com.company.springboot.demo.dao.entity.TaskCtable;
 import com.company.springboot.demo.dao.entity.TaskZtable;
 import com.company.springboot.demo.vo.LeaderWriteTask;
 import com.company.springboot.demo.vo.StuSubmitTaskVo;
@@ -31,10 +32,16 @@ public interface TaskTableService {
     ServerRes leaderWriteTask(LeaderWriteTask leaderWriteTask);
 
     /**
-     * 组长根据rwcid填写任务开始时间/结束时间
+     *组长删除任务
      * @param rwcid
      */
-    void  leaderWriteBeginAndOverTime(int rwcid);
+    int teamLeaderdelPlan(Integer rwcid);
+
+    /**
+     * 组长根据rwcid填写任务开始时间/结束时间
+     * @param
+     */
+    void  leaderWriteBeginAndOverTime(TaskCtable taskCtable);
 
     /**
      * 学生提交任务页面List

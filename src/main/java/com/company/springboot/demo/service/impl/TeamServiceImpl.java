@@ -108,11 +108,8 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public int updateping(TeamCtable teamCtable) {
-        int updateping = teamCTableMapper.updateping(teamCtable);
-        if(updateping == 1){
-            teamCTableMapper.updatestutas(teamCtable.getRyid());
-        }
-        return updateping;
+        int a = teamCTableMapper.updateping(teamCtable);
+        return a;
     }
 
 

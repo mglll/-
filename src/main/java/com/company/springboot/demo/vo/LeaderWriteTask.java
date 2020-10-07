@@ -15,7 +15,7 @@ public class LeaderWriteTask {
     private String rwid;
     private String ryid;
     private String name;
-    private String startdate;
-    private String enddate;
+    private String starttime;
+    private String endtime;
     private String ztask;
 }
