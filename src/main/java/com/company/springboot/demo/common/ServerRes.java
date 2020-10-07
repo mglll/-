@@ -56,6 +56,10 @@ public class ServerRes<T> implements Serializable {
         return Result.RESULT_SUCCESS.getCode();
     }
 
+    public static ServerRes error(String msg){
+        return new ServerRes(Result.RESULT_SUCCESS.getCode(),msg,null);
+    }
+
     public static ServerRes OK(String msg){
         return new ServerRes(Result.RESULT_SUCCESS.getCode(),msg,null);
     }

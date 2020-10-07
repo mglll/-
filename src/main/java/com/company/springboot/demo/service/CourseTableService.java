@@ -7,7 +7,7 @@ public interface CourseTableService {
 
     void addCourser(CourseTable courseTable);
 
-    int delCourser(String kcid);
+    int delCourser(Integer kcid);
 
     void eidtCourser(CourseTable courseTable);
 

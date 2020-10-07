@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/course")
 public class CourseController {
@@ -25,17 +27,18 @@ public class CourseController {
 
     @RequestMapping(value = "editcor",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes editCourse(CourseTable courseTable){
+    public ServerRes editCourse(@RequestBody CourseTable courseTable){
         courseTableService.eidtCourser(courseTable);
         return ServerRes.OK("修改成功");
     }
 
 
+
     @RequestMapping(value = "delcor",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes delCourse(String kcid){
-        courseTableService.delCourser(kcid);
-        return ServerRes.OK("删除成功");
+    public ServerRes delCourse(@RequestBody CourseTable courseTable){
+        int result =  courseTableService.delCourser(courseTable.getKcid());
+        return result == 1? ServerRes.OK("删除成功"):ServerRes.error("删除失败");
     }
 
 
