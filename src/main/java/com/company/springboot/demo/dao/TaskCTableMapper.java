@@ -38,9 +38,8 @@ public interface TaskCTableMapper extends BaseMapper<TaskCtable> {
 
     /**
      * 学生任务信息页面-提交按钮-更改状态
-     * @param submitstate
-     * @param rwcid
+     * @param taskCtable
      */
-    void stuUpdateTaskState(String submitstate,int rwcid);
+    void stuUpdateTaskState(TaskCtable taskCtable);
 
 }

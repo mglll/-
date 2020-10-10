@@ -72,7 +72,7 @@ public class TaskController {
 
     /**
      * 组长根据rwcid填写任务开始时间/结束时间
-     * @param rwcid
+     * @param taskCtable
      */
     @RequestMapping(value = "/leaderWriteBeginAndOverTime",method = RequestMethod.POST)
     @ResponseBody
@@ -93,12 +93,12 @@ public class TaskController {
     }
     /**
      * 学生任务信息页面-提交按钮-更改状态
-     * @param submitstate
+     * @param taskCtable
      */
     @RequestMapping(value = "/stuUpdateTaskState",method = RequestMethod.POST)
     @ResponseBody
-    public  ServerRes stuUpdateTaskState(String submitstate,int rwcid){
-        taskTableService.stuUpdateTaskState(submitstate,rwcid);
+    public  ServerRes stuUpdateTaskState(@RequestBody TaskCtable taskCtable){
+        taskTableService.stuUpdateTaskState(taskCtable);
         return ServerRes.OK("修改成功");
     }
 

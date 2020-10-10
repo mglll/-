@@ -103,11 +103,11 @@ public class TaskTableServiceImpl implements TaskTableService {
     }
     /**
      * 学生任务信息页面-提交按钮-更改状态
-     * @param submitstate
+     * @param taskCtable
      */
     @Override
-    public void stuUpdateTaskState(String submitstate,int rwcid) {
-        taskCTableMapper.stuUpdateTaskState(submitstate,rwcid);
+    public void stuUpdateTaskState(TaskCtable taskCtable) {
+        taskCTableMapper.stuUpdateTaskState(taskCtable);
     }
 
 

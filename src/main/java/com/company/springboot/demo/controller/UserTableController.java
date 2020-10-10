@@ -254,4 +254,16 @@ public class UserTableController {
         return ServerRes.success(serverRes);
     }
 
+    /**
+     * 用户获取个人信息
+     * @param userTable
+     * @return
+     */
+    @RequestMapping(value = "userOwnInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerRes userOwnInfo(UserTable userTable){
+        ServerRes<UserTable> userTableServerRes = userService.userOwnInfo(userTable);
+        return ServerRes.success(userTableServerRes);
+    }
+
 }

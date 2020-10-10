@@ -50,7 +50,7 @@ public class TeamController {
     //学生加入小组
     @RequestMapping(value = "/addsTeam",method = RequestMethod.POST)
     @ResponseBody
-    public ServerRes addTeam(TeamCtable teamCtable) {
+    public ServerRes addTeam(@RequestBody TeamCtable teamCtable) {
         teamService.addsTeam(teamCtable);
         return ServerRes.OK("添加成功");
     }

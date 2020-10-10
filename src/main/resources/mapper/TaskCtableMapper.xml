@@ -59,7 +59,8 @@
     <!--学生任务信息页面-提交按钮-更改状态-->
     <update id="stuUpdateTaskState">
         update  task_ctable
-        set submitstate=#{submitstate}
+        set submitstate=#{submitstate},
+            submittasktime=#{submittasktime}
         where rwcid = #{rwcid}
     </update>
 

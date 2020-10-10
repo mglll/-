@@ -111,6 +111,13 @@ public interface UserService {
      */
     ServerRes  findUserInfo(UserTable userTable);
 
+    /**
+     * 用户获取个人信息
+     * @param userTable
+     * @return
+     */
+    ServerRes userOwnInfo(UserTable userTable);
+
 
 
 

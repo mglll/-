@@ -235,4 +235,15 @@ public class UserSerciveImpl implements UserService {
         List<UserTable> userTables = userTableMapper.findUserInfo(userTable);
         return ServerRes.success(userTables);
     }
+
+    /**
+     * 用户获取个人信息
+     * @param userTable
+     * @return
+     */
+    @Override
+    public ServerRes userOwnInfo(UserTable userTable) {
+        UserTable userTable1 = userTableMapper.selectById(userTable.getRyid());
+        return ServerRes.success(userTable1);
+    }
 }
